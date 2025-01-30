@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fan-Themed Gallery</title>
+  <style>
+    /* Reset Styles */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(124, 143, 161);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 45px;
+      margin-top: 90px;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      width: 100%;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .image-block {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+    }
+
+    .image-block:hover img {
+      transform: scale(1.1);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .image-block:hover .caption {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Footer Styling */
+    .footer {
+      background-color: #2c2c2c;
+      color: #fff;
+      padding: 20px 0;
+      width: 105.5%;
+      bottom: 0;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+
+    .footer-column h4 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #f05454;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin: 5px 0;
+      position: relative;
+    }
+
+    .footer-column ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+      color: #eccaca;
+    }
+
+    .footer-column ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .footer-column ul li a:hover::after {
+      width: 100%;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #eccaca;
+    }
+
+    .social-icons a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .social-icons a:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive Footer Styles */
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-column {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+
+    /* Responsive Gallery Styles */
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      right: 10%;
+      width: 80%;
+      z-index: 2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(124,143,161);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 1000vh;
+            padding: 150vh;
+            
+        } */
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    /* Center the logo */
+    .logo {
+      text-align: center;
+      flex: 1;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      color: #080808;
+
+    }
+
+    .logo img {
+      height: 100px;
+    }
+  
+      .logo a:hover::after {
+      width: 0%;
+    }
+
+
+    /* Navigation list styles */
+    .nav li {
+      list-style: none;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(32, 23, 23);
+      font-size: larger;
+      font-weight: 600;
+      position: relative;
+    }
+
+    a:hover {
+      color: #eccaca;
+    }
+
+    a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: #ffffff;
+      transition: width 0.3s ease-in-out;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown li {
+      padding: 5px 10px;
+    }
+
+    .dropdown li a {
+      color: black;
+      font-size: medium;
+    }
+
+    .dropdown li a:hover {
+      color: #37515f;
+    }
+
+    .nav li:hover .dropdown {
+      display: flex;
+    }
+
+    /* Hamburger Menu Styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: rgb(189, 180, 180);
+      border-radius: 5px;
+    }
+
+    /* Show Hamburger menu on smaller screens */
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(124, 143, 161, 0.7);
+        /* Transparent background with 70% opacity */
+        padding: 20px;
+        z-index: 1;
+      }
+
+      .nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+        z-index: 3;
+      }
+
+      /* Stack items under the logo for smaller screens */
+      .nav-left,
+      .nav-right {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <!-- Navigation Section -->
+  <div class="container">
+    <div class="nav">
+      <!-- Left side links -->
+      <div class="nav-left">
+        <li><a href="home.html">Home</a></li>
+        <li>
+          <a href="#">Shop</a>
+          <!-- Dropdown Menu -->
+          <ul class="dropdown">
+            <li><a href="cellingfans.html">Ceiling Fans</a></li>
+            <li><a href="table fans.html">Table Fans</a></li>
+            <li><a href="wallfans.html.html">Wall Fans</a></li>
+            <li><a href="Accessories.html">Accessories</a></li>
+          </ul>
+        </li>
+        <li><a href="aboutus1.html">About Us</a></li>
+      </div>
+
+      <!-- Right side links -->
+      <div class="nav-right">
+        <li><a href="sing and login.html">Sign in</a></li>
+        <li><a href="conatct.html">Contact Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </div>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Logo Outside of Hamburger -->
+  <div class="logo">
+    <a href="#"><img src="fanlogo.png" alt="Logo" /></a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav");
+      nav.classList.toggle("active");
+    }
+  </script>
+  <!-- Gallery Section -->
+  <div class="gallery">
+    <div class="image-block">
+      <img src="fan.2_3805d7b3-0bef-4cf2-a31c-7a.webp" alt="Fan Image 1">
+      <div class="caption">Fan Image 1</div>
+    </div>
+    <div class="image-block">
+      <img src="black 30w.jpg" alt="Fan Image 2">
+      <div class="caption">Fan Image 2</div>
+    </div>
+    <div class="image-block">
+      <img src="2.jpg" alt="Fan Image 3">
+      <div class="caption">Fan Image 3</div>
+    </div>
+    <div class="image-block">
+      <img src="5.jfif" alt="Fan Image 4">
+      <div class="caption">Fan Image 4</div>
+    </div>
+    <div class="image-block">
+      <img src="iconfan3.jpg" alt="Fan Image 5">
+      <div class="caption">Fan Image 5</div>
+    </div>
+    <div class="image-block">
+      <img src="lifestyle2.jfif" alt="Fan Image 6">
+      <div class="caption">Fan Image 6</div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Company Links Column -->
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="aboutus1.html">About Us</a></li>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Affiliate Program</a></li>
+        </ul>
+      </div>
+
+      <!-- Get Help Column -->
+      <div class="footer-column">
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Order Status</a></li>
+          <li><a href="#">Payment Options</a></li>
+        </ul>
+      </div>
+
+      <!-- Online Shop Column -->
+      <div class="footer-column">
+        <h4>Online Shop</h4>
+        <ul>
+          <li><a href="cellingfans.html">Ceiling Fans</a></li>
+          <li><a href="table fans.html">Table Fans</a></li>
+          <li><a href="wallfans.html.html">Wall Fans</a></li>
+          <li><a href="Accessories.html">Accessories</a></li>
+        </ul>
+      </div>
+
+      <!-- Follow Us Column -->
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Font Awesome (for social icons) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

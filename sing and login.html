@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+
+    <title>Signup/Login Form with Animation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: "Jost", sans-serif;
+        background: linear-gradient(
+          to bottom,
+          rgb(98, 118, 136),
+          rgb(88, 109, 129)
+        );
+      }
+
+      .main {
+        width: 350px;
+        height: 500px;
+        background: red;
+        overflow: hidden;
+        background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38")
+          no-repeat center/cover;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+        animation: fadeInSlideUp 1s ease-in-out;
+      }
+
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #chk {
+        display: none;
+      }
+
+      .signup {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      label {
+        color: #0e0c0c;
+        font-size: 2.3em;
+        justify-content: center;
+        display: flex;
+        margin: 60px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+      }
+
+      input {
+        width: 60%;
+        height: 20px;
+        background: #eee9e9;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 40%;
+        height: 40px;
+        margin: 10px auto;
+        justify-content: center;
+        display: block;
+        color: #ffffff;
+        background: #37515f;
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 20px;
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        transition: 0.2s ease-in;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #22323b;
+      }
+
+      .login {
+        height: 460px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        background: #1d1c1c;
+        border-radius: 60% / 10%;
+        transform: translateY(-180px);
+        transition: 0.8s ease-in-out;
+        height: 460px;
+        background: linear-gradient(to bottom right, #e0e7f0, #d8d8d7, #dddadf);
+      }
+
+      #chk:checked ~ .login {
+        transform: translateY(-500px);
+      }
+
+      #chk:checked ~ .signup label {
+        transform: scale(0.6);
+      }
+
+    
+    </style>
+  </head>
+
+  <body>
+
+
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+
+      <div class="signup">
+        <form id="signupForm">
+          <label for="chk" aria-hidden="true">Sign up</label>
+          <input
+            type="text"
+            name="txt"
+            id="signupName"
+            placeholder="User name"
+            required=""
+          />
+          <input
+            type="email"
+            name="email"
+            id="signupEmail"
+            placeholder="Email"
+            required=""
+          />
+          <input
+            type="password"
+            name="pswd"
+            id="signupPassword"
+            placeholder="Password"
+            required=""
+          />
+          <button type="submit">Sign up</button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form id="loginForm">
+          <label for="chk" aria-hidden="true">Login</label>
+          <input
+            type="email"
+            name="email"
+            id="loginEmail"
+            placeholder="Email"
+            required=""
+          />
+          <input
+            type="password"
+            name="pswd"
+            id="loginPassword"
+            placeholder="Password"
+            required=""
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById("signupName").value.trim();
+          const email = document.getElementById("signupEmail").value.trim();
+          const password = document
+            .getElementById("signupPassword")
+            .value.trim();
+
+          if (!name || !email || !password) {
+            alert("Please fill in all fields.");
+            return;
+          }
+
+          if (password.length < 6) {
+            alert("Password must be at least 6 characters.");
+            return;
+          }
+
+          alert(`Signup successful! Welcome, ${name}.`);
+
+          setTimeout(() => {
+            alert("Redirecting to the homepage.");
+            window.location.href = "homepage.html";
+          }, 500);
+        });
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const email = document.getElementById("loginEmail").value.trim();
+          const password = document
+            .getElementById("loginPassword")
+            .value.trim();
+
+          if (!email || !password) {
+            alert("Please fill in both email and password fields.");
+            return;
+          }
+
+          if (password.length < 6) {
+            alert("Password must be at least 6 characters.");
+            return;
+          }
+
+          alert("Login successful!");
+
+          setTimeout(function () {
+            alert("Redirecting to the homepage.");
+            window.location.href = "homepage.html";
+          }, 500);
+        });
+    </script>
+  </body>
+</html>

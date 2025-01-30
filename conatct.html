@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      margin-top: 10px;
+    }
+
+    /* Background Video Styling */
+    .class1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      /* Ensure video stays behind other elements */
+    }
+
+    .class2 {
+      display: flex;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px white;
+      background-color: rgb(0, 0, 0, 0.4);
+      overflow: hidden;
+      animation: fadeInUp 1.5s ease-in-out;
+      /* Apply fadeInUp animation to the container */
+    }
+
+    .class3 {
+      flex: 1;
+    }
+
+    .class4 {
+      flex: 1;
+      padding: 40px;
+      animation: fadeIn 1.5s ease-in-out;
+      /* Apply fadeIn animation to the form section */
+    }
+
+    .class4 p {
+      color: white;
+    }
+
+    .class4 h2 {
+      font-size: 24px;
+      color: #8498af;
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+
+    .class4 label {
+      display: block;
+      font-size: 14px;
+      color: #ffffff;
+      margin-top: 10px;
+    }
+
+    .class4 input[type="text"],
+    .class4 input[type="email"],
+    .class4 input[type="message"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+    }
+
+    .class4 input[type="checkbox"] {
+      margin-top: 20px;
+    }
+  
+      .logo a:hover::after {
+      width: 0%;
+    }
+
+
+    .class5 {
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    .class4 button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #454f5a;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .class4 button:hover {
+      background-color: #8498af;
+      color: black;
+      transition: 0.6s;
+    }
+
+    .class6 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .class6 img {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .class7 {
+      font-size: 14px;
+      color: #007bff;
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        top: 10px;
+        left: 10%;
+        right: 10%;
+        width: 80%;
+        z-index: 2;
+         
+     
+      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(124,143,161);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 1000vh;
+            padding: 150vh;
+            
+        } */
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 40px;
+      }
+
+      .nav-left,
+      .nav-right {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+      }
+
+      /* Center the logo */
+      .logo {
+        text-align: center;
+        flex: 1;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        color: #080808;
+      }
+
+      .logo img {
+        height: 100px;
+      }
+
+      /* Navigation list styles */
+      .nav li {
+        list-style: none;
+        position: relative;
+      }
+
+      a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: larger;
+        font-weight: 600;
+        position: relative;
+      }
+
+      a:hover {
+        color: #eccaca;
+      }
+
+      a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: #ffffff;
+        transition: width 0.3s ease-in-out;
+      }
+
+      a:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Styles */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+        padding: 10px;
+        display: none;
+        flex-direction: column;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .dropdown li {
+        padding: 5px 10px;
+      }
+
+      .dropdown li a {
+        color: black;
+        font-size: medium;
+      }
+
+      .dropdown li a:hover {
+        color: #37515f;
+      }
+
+      .nav li:hover .dropdown {
+        display: flex;
+      }
+
+      /* Hamburger Menu Styles */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 30px;
+        height: 4px;
+        background-color: rgb(189, 180, 180);
+        border-radius: 5px;
+      }
+
+      /* Show Hamburger menu on smaller screens */
+      @media (max-width: 768px) {
+        .nav {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100%;
+          background-color: rgba(124, 143, 161, 0.7);
+          padding: 20px;
+          z-index: 1;
+        }
+
+        .nav.active {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+          z-index: 3;
+        }
+
+        /* Stack items under the logo for smaller screens */
+        .nav-left, .nav-right {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Video -->
+  <video class="class1" autoplay muted loop>
+    <source src="background video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="container">
+    <div class="nav">
+      <!-- Left side links -->
+      <div class="nav-left">
+        <li><a href="homepage.html">Home</a></li>
+        <li>
+          <a href="#">Shop</a>
+          <!-- Dropdown Menu -->
+          <ul class="dropdown">
+            <li><a href="cellingfans.html">Ceiling Fans</a></li>
+            <li><a href="table fans.html">Table Fans</a></li>
+            <li><a href="wallfans.html.html">Wall Fans</a></li>
+            <li><a href="Accessories.html">Accessories</a></li>
+          </ul>
+        </li>
+        <li><a href="aboutus1.html">About Us</a></li>
+      </div>
+
+      <!-- Right side links -->
+      <div class="nav-right">
+        <li><a href="sing and login.html">Sign in</a></li>
+        <li><a href="conatct.html">Contact Us</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </div>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Logo Outside of Hamburger -->
+  <div class="logo">
+    <a href="#"><img src="fanlogo.png" alt="Logo" /></a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav");
+      nav.classList.toggle("active");
+    }
+  </script>
+
+  <div class="class2">
+    <div class="class4">
+      <h2>Contact Us</h2>
+      <p>Create your account in seconds</p>
+      <form id="form1">
+        <label for="username">USERNAME</label>
+        <input type="text" name="username" id="username" placeholder="username" required />
+
+        <label for="email">Email Address</label>
+        <input type="text" name="email" id="email" placeholder="Enter email" required />
+
+        <label for="message">MESSAGE</label>
+        <input type="message" id="message" placeholder="comment" required />
+
+        <input type="checkbox" id="terms" />
+        <label for="terms" class="class5">I agree to the Terms of services and privacy policy</label>
+
+        <button type="submit">Contact Us</button>
+      </form>
+      <div class="class6">
+        <p>or continue with</p>
+        <img src="apple logo without background.png" alt="Apple" width="30" />
+        <img src="189824.webp" alt="Google" width="30" />
+        <img src="twitter-icon-8.png" alt="Twitter" width="30" />
+        <img src="faceboojk.png" alt="Facebook" width="30" />
+      </div>
+    </div>
+  </div>
+  <script src="jquery-3.7.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js"
+    integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      $(document).ready(function () {
+        $("#form1").validate({
+          rules: {
+            username: { required: true, minlength: 3, maxlength: 7 },
+            email: { required: true, email: true },
+            message: { required: true, minlength: 5, maxlength: 10 },
+            terms: { required: true },
+          },
+          messages: {
+            username: "Enter 3-7 characters",
+            email: "Enter a valid email",
+            message: "Enter 5-10 characters",
+            terms: "Please agree to terms",
+          },
+          errorPlacement: function (error, element) {
+            element
+              .attr("placeholder", error.text())
+              .addClass("error-placeholder"); 
+          },
+          success: function (label, element) {
+            $(element).removeClass("error-placeholder"); 
+          },
+        });
+      });
+    </script>
+    <style>
+      .error-placeholder::placeholder {
+        color: red; 
+      }
+    </style>
+    
+    
+
+  
+
+
+
+</body>
+
+</html>
